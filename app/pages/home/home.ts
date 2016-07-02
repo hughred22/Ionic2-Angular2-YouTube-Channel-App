@@ -14,7 +14,7 @@ export class HomePage {
   channelID: string = 'UCbtVfS6cflbIXTZ0nGeRWVA';
   maxResults: string = '10';
   pageToken: string; 
-  googleToken: string = 'AIzaSyAnAi9xKNqI_xNGDKHtFZrInz5l_QkMqNs';
+  googleToken: string = '[YOUR GOOGLE API KEY]';
   searchQuery: string = 'ravetraintv -kissing';
   posts: any = [];
   onPlaying: boolean = false; 
