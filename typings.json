@@ -1,0 +1,10 @@
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "gapi": "registry:dt/gapi#0.0.0+20160412153822",
+    "gapi.youtube": "registry:dt/gapi.youtube#0.0.0+20160317120654",
+    "youtube": "registry:dt/youtube#0.0.0+20160317120654"
+  }
+}

@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-navbar class="youtube-player-header" dark>
+    <div id="player" class="embed-responsive embed-responsive-16by9">
+      <div id="placeholder" style="width: 100%" class="embed-responsive-item"></div>
+      <div class="embed-responsive-item" style="width: 100%; z-index: 90; background-color: black; background: url('images/cover.png'); background-size:cover;" *ngIf = "!onPlaying"></div>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+    <div *ngFor="let post of posts">
+      <ion-card class="adv-map">
+        <div style="position: relative">
+          <div class="sixteen-nine">
+            <div class="content">
+              <img src="{{post.snippet.thumbnails.high.url}}">
+            </div>
+          </div>
+          <button fab fab-right fab-top class="fab-map" (click)="playVideo($event, post)">
+            <ion-icon name='play'></ion-icon>
+          </button>
+        </div>
+        <ion-item style="padding-top: 26px;">
+          <ion-icon subtle large item-left name='disc' primary></ion-icon>
+          <h2 class="item-text-wrap">{{post.snippet.title}}</h2>
+        </ion-item>
+        <ion-item actions>
+          <button primary clear item-right>
+            <ion-icon name='share'></ion-icon>
+            SHARE
+          </button>
+        </ion-item>
+
+      </ion-card>
+    </div>
+  <button light>Load More...</button>
+  
+</ion-content>

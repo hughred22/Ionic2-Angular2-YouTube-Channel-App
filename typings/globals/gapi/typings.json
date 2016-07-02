@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/491ca65466eb5b2bd50db01104cdaee3fbbed8ba/gapi/gapi.d.ts",
+    "raw": "registry:dt/gapi#0.0.0+20160412153822",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/491ca65466eb5b2bd50db01104cdaee3fbbed8ba/gapi/gapi.d.ts"
+  }
+}
