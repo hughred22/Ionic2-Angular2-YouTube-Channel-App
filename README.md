@@ -11,10 +11,8 @@ To start editing this code, make sure that NodeJS is installed in your workspace
 Clone the repository from github via HTTPS or SSH:
 
 Via HTTPS
-     git clone https://github.com/hughred22/Ionic2-Angular2-YouTube-Channel-App.git
+     `git clone https://github.com/hughred22/Ionic2-Angular2-YouTube-Channel-App.git`
 
-Via SSH
-     git clone git@github.com/hughred22/Ionic2-Angular2-YouTube-Channel-App.git
 
 Install node packages
 
