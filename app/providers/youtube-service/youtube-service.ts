@@ -1,5 +1,6 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
+import { Events } from 'ionic-angular';
 import { window } from '@angular/platform-browser/src/facade/browser';
 
 
@@ -15,8 +16,13 @@ export class YoutubeService {
     playerWidth: '100%'
   }
 
-  constructor () {
-      this.setupPlayer();
+  constructor(public events: Events) {
+    this.setupPlayer();
+    //Added for avoid rejection in the Play Store
+    // For this reason: "YouTube background play when the screen is off."
+    this.events.subscribe('App:Paused', () => {
+      this.youtube.player.pauseVideo();
+    });
   }
 
   bindPlayer(elementId): void {
@@ -37,39 +43,48 @@ export class YoutubeService {
   loadPlayer(): void {
     if (this.youtube.ready && this.youtube.playerId) {
       if (this.youtube.player) {
-      this.youtube.player.destroy();
+        console.log('destroy');
+        this.youtube.player.destroy();
       }
       this.youtube.player = this.createPlayer();
     }
   }
 
-  setupPlayer () {
+  setupPlayer() {
     // in production mode, the youtube iframe api script tag is loaded
     // before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has
     // already been triggered
     // TODO: handle this in build or in nicer in code
-    console.log ("Running Setup Player");
+    console.log("Running Setup Player");
     window['onYouTubeIframeAPIReady'] = () => {
       if (window['YT']) {
-         console.log('Youtube API is ready');
-         this.youtube.ready = true;
-         this.bindPlayer('placeholder');
-         this.loadPlayer();
+        console.log('Youtube API is ready');
+        this.youtube.ready = true;
+        this.bindPlayer('placeholder');
+        this.loadPlayer();
       }
     };
     if (window.YT && window.YT.Player) {
-            console.log('Youtube API is ready');
-         this.youtube.ready = true;
-         this.bindPlayer('placeholder');
-         this.loadPlayer();
+      console.log('Youtube API is ready');
+      this.youtube.ready = true;
+      this.bindPlayer('placeholder');
+      this.loadPlayer();
     }
   }
 
-  launchPlayer(id, title):void {
+  launchPlayer(id, title): void {
     this.youtube.player.loadVideoById(id);
     this.youtube.videoId = id;
     this.youtube.videoTitle = title;
     return this.youtube;
+  }
+
+  stopVideo() {
+    this.youtube.player.stopVideo();
+  }
+
+  pauseVideo(){
+    this.youtube.player.pauseVideo();
   }
 }
 
